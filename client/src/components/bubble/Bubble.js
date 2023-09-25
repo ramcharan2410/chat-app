@@ -14,9 +14,9 @@ const Bubble = (props) => {
     >
       <p className="message-content">
         {message_content}{' '}
-        <sub className="message-time">
+        <span className="message-time">
           {hours}:{minutes} … {now.getDate()}/{now.getMonth()}
-        </sub>
+        </span>
       </p>
     </li>
   )

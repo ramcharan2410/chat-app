@@ -138,6 +138,18 @@ button {
   padding: 0;
   border: 1px solid black;
 }
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.chats {
+  color: #eee;
+  padding: 2px;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: inherit;
+}
 .userfriend {
   font-family: inherit;
   font-size: 0.6rem;
@@ -159,10 +171,12 @@ button {
 #chat-container {
   background-color: #0B141A;
   color: #eee;
+  max-width: 65%;
+  height: 85vh;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding-bottom: 5px;
   position: relative;
   overflow-y:auto;
@@ -170,7 +184,7 @@ button {
 }
 /* Style the scrollbar track */
 #chat-container::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
   /* Width of the scrollbar track */
 }
 
@@ -184,24 +198,13 @@ button {
 
 /* Change thumb color on hover */
 #chat-container::-webkit-scrollbar-thumb:hover {
+  width: 8px;
   background-color: #999;
   /* Hover color */
 }
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-.chats{
-  color:#eee;
-  padding: 2px;
-  font-size: 1.5rem;
-  text-align: center;
-  background-color: black;
-}
 .chat-content {
   flex-grow: 1;
-  max-height: 90vh;
+  height: 40vh;
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -215,23 +218,22 @@ ul {
 .message-content {
   font-family: inherit;
   background-color: #005C4B;
-  flex-grow: 1;
-  width: 100px;
+  display: inline-block;
   max-width: 50%;
   border-radius: 10px;
   padding: 9px;
   font-size: 0.75rem;
   font-weight: normal;
   position: relative;
+  white-space: normal;
 }
 .message-time {
-  font-size: 0.5rem;
+  padding-left:3px;
+  font-size: 0.45rem;
   font-family: inherit;
-  color: #eee;
-  position: absolute;
+  color: #99BEB7;
   bottom: 0;
-  right: 0;
-  padding: 4px;
+  right:0;
 }
 .messageInputForm {
   align-self: stretch;
@@ -240,6 +242,7 @@ ul {
   justify-content: space-evenly;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom:10px;
   background-color: #202C33;
   width: 65%;
   position: fixed;
