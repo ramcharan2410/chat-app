@@ -1,17 +1,17 @@
 import './App.css'
-import { Route, Switch } from 'react-router-dom'
-import Home from './components/home'
-import Login from './components/login'
-import ProtectedRoute from './components/protectedRoute'
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
+import Home from './components/home/Home'
+import Login from './components/login/Login'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/login" render={(props) => <Login {...props} />} />
         <ProtectedRoute exact component={Home} path="/" />
       </Switch>
-    </>
+    </BrowserRouter>
   )
 }
 
