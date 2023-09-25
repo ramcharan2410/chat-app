@@ -1,0 +1,15 @@
+body{
+  background-color: rgb(27, 26, 26);
+}
+.login{
+  text-align: center;
+  color: #eee;
+}
+.login-div {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
