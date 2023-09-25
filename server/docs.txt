@@ -1,0 +1,9 @@
+db table for chat data->chatdata
+    columns->sender,reciever,message_content,time,(id is auto generated)
+    temp route to get chat data->/chat/:sender/:reciever !auth is yet to be Added
+
+db table for userData->users
+    columns->name,email,picture,first_name,last_name,socket_id
+
+db table for usersFriends->userfriends
+    columns->user,friend (i think)
