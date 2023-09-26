@@ -1,8 +1,7 @@
 import './usersfriends.css'
 const UsersFriends = (props) => {
   const { picture, name, socket_id, email } = props.data
-  const { selectedUserChanger, selectedUserEmail, fetchChat } = props
-  const isActive = selectedUserEmail === email
+  const { selectedUserChanger, fetchChat } = props
 
   return (
     <li
@@ -15,7 +14,7 @@ const UsersFriends = (props) => {
           fetchChat(email)
           selectedUserChanger(props.data)
         }}
-        className={`userfriend ${isActive ? 'active-userfriend' : ''}`}
+        className="userfriend"
       >
         <img
           src={picture}

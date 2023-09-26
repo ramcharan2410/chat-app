@@ -218,6 +218,34 @@ app.post('/addfriend', async (req, res) => {
   await db.run(sqlq, [userEmail, friendEmail, friendEmail, userEmail])
   res.json({ message: 'success' })
 })
+// Endpoint to remove a friend
+// Update the /removefriend endpoint to delete chat messages
+app.post('/removefriend', auth, async (req, res) => {
+  const { friendEmail } = req.body
+  const userEmail = req.userDetails.email
+
+  // Remove the friend relationship
+  const removeFriendQuery =
+    'DELETE FROM userfriends WHERE (user = ? AND friend = ?) OR (user = ? AND friend = ?)'
+  await db.run(removeFriendQuery, [
+    userEmail,
+    friendEmail,
+    friendEmail,
+    userEmail,
+  ])
+
+  // Delete chat messages with the friend
+  const deleteChatQuery =
+    'DELETE FROM chatdata WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?)'
+  await db.run(deleteChatQuery, [
+    userEmail,
+    friendEmail,
+    friendEmail,
+    userEmail,
+  ])
+
+  res.json({ message: 'success' })
+})
 
 // Endpoint to retrieve chat history between two users
 app.get('/chat/:sender/:receiver/', async (req, res) => {
@@ -267,6 +295,21 @@ app.get('/getuserdata/:email', async (req, res) => {
     res.send(data)
   } catch (e) {
     console.error(e)
+  }
+})
+// Endpoint to clear chat history with a specific friend
+app.post('/clear-chat/:userEmail/:friendEmail', async (req, res) => {
+  const { userEmail, friendEmail } = req.params
+  const sqlq = `
+    DELETE FROM chatdata
+    WHERE (sender=? AND receiver=?) OR (sender=? AND receiver=?)
+  `
+  try {
+    await db.run(sqlq, [userEmail, friendEmail, friendEmail, userEmail])
+    res.json({ message: 'Chat history cleared successfully' })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Failed to clear chat history' })
   }
 })
 

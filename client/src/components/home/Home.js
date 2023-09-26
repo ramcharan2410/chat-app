@@ -173,6 +173,70 @@ const Home = (props) => {
       </>
     )
   }
+  // Function to remove a friend
+  const removeFriend = async (friendEmail) => {
+    const jwtToken = Cookies.get('jwt_token')
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `${jwtToken}`,
+      },
+      body: JSON.stringify({ friendEmail }),
+    }
+
+    try {
+      const response = await fetch(`${address}:3001/removefriend`, options)
+
+      if (response.ok) {
+        // Remove the friend locally from the userFriends state
+        setUserFriends((prev) =>
+          prev.filter((friend) => friend.email !== friendEmail)
+        )
+
+        // Check if the friend being removed is the currently selected user
+        if (selectedUser.email === friendEmail) {
+          // If yes, clear the chat content by resetting selectedUser to an empty object
+          setSelectedUser({})
+          setMessagesList([]) // Clear the chat messages
+        }
+      } else {
+        console.error('Failed to remove friend')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const clearChat = async () => {
+    if (selectedUser.email) {
+      const jwtToken = Cookies.get('jwt_token')
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `${jwtToken}`,
+        },
+      }
+
+      try {
+        const response = await fetch(
+          `${address}:3001/clear-chat/${userData.email}/${selectedUser.email}`,
+          options
+        )
+
+        if (response.ok) {
+          // Clear the chat locally in your component
+          setMessagesList([])
+        } else {
+          console.error('Failed to clear chat')
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  }
+
   const notify = (data) => {
     const notification = new Notification(`message from ${data.sender}`, {
       body: `${data.message_content}`,
@@ -322,13 +386,25 @@ const Home = (props) => {
           <div className="chats">Chats</div>
           {userFriends.length > 0 ? (
             userFriends.map((each) => (
-              <UsersFriends
-                data={each}
-                selectedUserChanger={setSelectedUser}
-                fetchChat={fetchChat}
-                selectedUserEmail={selectedUser.email}
+              <div
                 key={each.email}
-              />
+                className={`userFriend-header ${
+                  selectedUser.email === each.email ? 'active-userfriend' : ''
+                }`}
+              >
+                <UsersFriends
+                  data={each}
+                  selectedUserChanger={setSelectedUser}
+                  fetchChat={fetchChat}
+                  selectedUserEmail={selectedUser.email}
+                />
+                <button
+                  onClick={() => removeFriend(each.email)}
+                  className="remove-friend-button"
+                >
+                  Remove Friend
+                </button>
+              </div>
             ))
           ) : (
             <h1>No Friends Found</h1>
@@ -341,6 +417,12 @@ const Home = (props) => {
           }}
         >
           <div className="chat-content" ref={chatCanvas}>
+            <div className="chat-header">
+              <h2>{selectedUser.name}</h2>
+              <button onClick={clearChat} className="clear-chat-button">
+                Clear Chat
+              </button>
+            </div>
             {renderMessages()}
           </div>
           <div>

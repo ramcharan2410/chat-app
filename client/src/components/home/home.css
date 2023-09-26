@@ -127,7 +127,7 @@ button {
 }
 #sidebar {
   font-family: inherit;
-  background-color: #0B141A;
+  background-color: #111B21;
   flex-grow: 1;
   max-width: 35%;
   display: flex;
@@ -150,21 +150,39 @@ ul {
   text-align: center;
   background-color: inherit;
 }
+.userFriend-header {
+  background-color: #0B141A;
+  display: flex;
+  justify-content: space-between;
+}
+.userFriend-header:hover{
+  background-color: #202C33;
+}
 .userfriend {
   font-family: inherit;
   font-size: 0.6rem;
   padding: 7px;
-  background-color: #0B141A;
+  background-color: inherit;
   color: #eee;
   display: flex;
   align-items: center;
 }
-
-.userfriend:hover {
-  background-color: #2A3942;
-  cursor: pointer;
+.remove-friend-button {
+  background-color: rgb(2, 2, 100);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  height: fit-content;
+  margin-top: 13px;
+  margin-right: 5px;
+  padding: 4px;
 }
 
+.remove-friend-button:hover {
+  background-color: red;
+  transform: translateY(2px);
+  transition: transform 0.3s ease;
+}
 .active-userfriend {
   background-color: #202C33;
 }
@@ -207,6 +225,25 @@ ul {
   height: 40vh;
   padding-left: 30px;
   padding-right: 30px;
+}
+.chat-header{
+  display: flex;
+  justify-content: space-between;
+}
+.clear-chat-button {
+  background-color: rgb(2, 2, 100);
+  color: white;
+  border-radius: 10px;
+  height: fit-content;
+  border: none;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.clear-chat-button:hover {
+  background-color: red;
+  transform: translateY(2px);
+  transition: transform 0.3s ease;
 }
 .bubble {
   width: 100%;
