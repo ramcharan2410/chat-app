@@ -8,8 +8,6 @@
 body {
   font-family:'Poppins',sans-serif;
   overflow: hidden;
-
-  /* padding-bottom: 40px; */
 }
 .profile-pic {
   border-radius: 100px;
@@ -148,7 +146,7 @@ ul {
   padding: 2px;
   font-size: 1.5rem;
   text-align: center;
-  background-color: inherit;
+  background-color: #0B141A;
 }
 .userFriend-header {
   background-color: #0B141A;
@@ -200,25 +198,18 @@ ul {
   overflow-y:auto;
   overflow-x: hidden;
 }
-/* Style the scrollbar track */
 #chat-container::-webkit-scrollbar {
   width: 6px;
-  /* Width of the scrollbar track */
 }
 
-/* Style the scrollbar thumb (draggable part) */
 #chat-container::-webkit-scrollbar-thumb {
   background-color: #ccc;
-  /* Color of the scrollbar thumb */
   border-radius: 4px;
-  /* Rounded corners for the thumb */
 }
 
-/* Change thumb color on hover */
 #chat-container::-webkit-scrollbar-thumb:hover {
   width: 8px;
   background-color: #999;
-  /* Hover color */
 }
 .chat-content {
   flex-grow: 1;
@@ -259,14 +250,14 @@ ul {
   max-width: 50%;
   border-radius: 10px;
   padding: 9px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: normal;
   position: relative;
   white-space: normal;
 }
 .message-time {
   padding-left:3px;
-  font-size: 0.45rem;
+  font-size: 0.55rem;
   font-family: inherit;
   color: #99BEB7;
   bottom: 0;

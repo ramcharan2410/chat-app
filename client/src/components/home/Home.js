@@ -7,12 +7,10 @@ import Suggestions from '../suggestions/Suggestions'
 import { IoMdSend } from 'react-icons/io'
 import { io } from 'socket.io-client'
 import Bubble from '../bubble/Bubble'
-//10.10.72.77
 const address = 'http://localhost'
 const debounce = (func, timeout = 10000) => {
   let timer
   let c = 0
-
   return (...args) => {
     clearTimeout(timer)
     timer = setTimeout(() => {
@@ -65,9 +63,7 @@ const Home = (props) => {
   }
 
   const addingFriend = async (FriendData) => {
-    // Check if userFriends is empty or undefined
     if (!userFriends || userFriends.length === 0) {
-      // If userFriends is empty, add the current user as the first friend
       setUserFriends([FriendData])
       return
     }
@@ -173,7 +169,6 @@ const Home = (props) => {
       </>
     )
   }
-  // Function to remove a friend
   const removeFriend = async (friendEmail) => {
     const jwtToken = Cookies.get('jwt_token')
     const options = {
@@ -189,16 +184,13 @@ const Home = (props) => {
       const response = await fetch(`${address}:3001/removefriend`, options)
 
       if (response.ok) {
-        // Remove the friend locally from the userFriends state
         setUserFriends((prev) =>
           prev.filter((friend) => friend.email !== friendEmail)
         )
 
-        // Check if the friend being removed is the currently selected user
         if (selectedUser.email === friendEmail) {
-          // If yes, clear the chat content by resetting selectedUser to an empty object
           setSelectedUser({})
-          setMessagesList([]) // Clear the chat messages
+          setMessagesList([])
         }
       } else {
         console.error('Failed to remove friend')
@@ -226,7 +218,6 @@ const Home = (props) => {
         )
 
         if (response.ok) {
-          // Clear the chat locally in your component
           setMessagesList([])
         } else {
           console.error('Failed to clear chat')
@@ -346,7 +337,6 @@ const Home = (props) => {
   useEffect(() => {
     const chatContainerRef = chatCanvas.current
 
-    // Scroll to the bottom when messagesList changes
     chatContainerRef.scrollTop = chatContainerRef.scrollHeight
   }, [messagesList])
 

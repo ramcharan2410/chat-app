@@ -19,7 +19,6 @@ io.use((socket, next) => {
   const token = socket.handshake.auth.token
 
   try {
-    // Decode the JWT token to get user information
     const user = jwt_decode(token)
     const userData = {
       email: user.email,
@@ -38,11 +37,9 @@ io.use((socket, next) => {
 
 // Handle socket.io connections
 io.on('connection', async (socket) => {
-  // Update the user's socket_id in the database upon connection
   const sqlq = `update users set socket_id=? where email=?`
   await db.run(sqlq, [socket.id, socket.user.email])
 
-  // Broadcast information about the user's presence to other clients
   socket.broadcast.emit('get-friends', {
     type: 1,
     email: socket.user.email,
@@ -54,11 +51,9 @@ io.on('connection', async (socket) => {
     const { message, receiver } = payload
 
     try {
-      // Fetch the recipient's socket_id from the database
       const sqlq = 'select socket_id from users where email=?'
       const receiverSocket = await db.get(sqlq, [receiver])
 
-      // Insert the message into the chatdata table
       const sqlq2 =
         'insert into chatdata(sender,receiver,message_content,time) values(?,?,?,?)'
       const now = new Date()
@@ -77,7 +72,6 @@ io.on('connection', async (socket) => {
         time: now.toString(),
       }
 
-      // Emit the message to the recipient if they are online
       if (receiverSocket !== null) {
         socket
           .to(receiverSocket.socket_id)
@@ -91,11 +85,8 @@ io.on('connection', async (socket) => {
 
   // Handle disconnection
   socket.on('disconnect', async () => {
-    // Clear the user's socket_id in the database upon disconnection
     const sqlq = `update users set socket_id=NULL where email=?`
     await db.run(sqlq, [socket.user.email])
-
-    // Broadcast user's departure to other clients
     socket.broadcast.emit('get-friends', { type: 0, email: socket.user.email })
   })
 })
@@ -162,8 +153,6 @@ const auth = async (req, res, nxt) => {
   nxt()
 }
 
-// Define routes
-
 // Get all users
 app.get('/', async (req, res) => {
   const data = await db.all('select * from users')
@@ -218,13 +207,12 @@ app.post('/addfriend', async (req, res) => {
   await db.run(sqlq, [userEmail, friendEmail, friendEmail, userEmail])
   res.json({ message: 'success' })
 })
+
 // Endpoint to remove a friend
-// Update the /removefriend endpoint to delete chat messages
 app.post('/removefriend', auth, async (req, res) => {
   const { friendEmail } = req.body
   const userEmail = req.userDetails.email
 
-  // Remove the friend relationship
   const removeFriendQuery =
     'DELETE FROM userfriends WHERE (user = ? AND friend = ?) OR (user = ? AND friend = ?)'
   await db.run(removeFriendQuery, [
