@@ -402,7 +402,7 @@ const Home = (props) => {
               </div>
             ))
           ) : (
-            <h1 style={{ color: '#eee' }}>No Friends Found</h1>
+            <h1 className="no-friends-found">No Friends Found</h1>
           )}
         </div>
 

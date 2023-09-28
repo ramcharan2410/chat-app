@@ -10,23 +10,23 @@
 6. [Documentation](#documentation)
 7. [Features](#features)
 8. [Screenshots](#screenshots)
-9. [Demo](#demo)
+9. [Demos](#demos)
 10. [Details](#details)
 11. [Feedback](#feedback)
 
 ## Brief Description
 
-- This project is a web chat application using React.js and Node.js that enables users to engage in real-time one-on-one and group conversations.
+- This project is a web chat application using React.js and Node.js that enables users to engage in real-time one-on-one conversations.
 - The application leverages a range of technologies, including JWT-based user authentication, HTTP requests, WebSocket communication for instant messaging, and integration with Google Cloud services for data storeage and possibly user authentication.
 - It offers features such as clearing chat history and adding/removing friends, all accessible through an intuitive user interface.
 - It also includes features like message notifications and automatic scrolling to enhance the user experience.
 
 ## Deployment
 
-To run this project, proceed with the following steps:
+To deploy this project, proceed with the following steps:
 
 1. Fork this repository
-2. Clone this repository in your local code editor (preferably VS Code)
+2. Clone this repository in your local Integrated Development Environment (IDE) (preferably VS Code)
 3. Install dependencies and libraries required for client ->
 
    `cd client`
@@ -51,7 +51,7 @@ To run this project, proceed with the following steps:
 
    `npm start`
 
-7. Finally, this project will be launched in http://localhost:3000.
+7. Finally, this project will be launched at http://localhost:3000.
 
 ## Environment Variables
 
@@ -141,6 +141,7 @@ Refer to the below given respective documentations for the languages used to bui
 - User registration and authentication
 - Sending and receiving text messages between users
 - Real-time message updates
+- Management of chat history and friends list
 
 ## Screenshots
 
@@ -149,8 +150,8 @@ Here are few screenshots of this project.
 <img src='./images/project/login-page.png' alt='Login Page' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
 <p style='text-align:center'>Login Page</p>
 
-<img src='./images/project/no-friends-found.png' alt='No Friend Found' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Initially you have no friends</p>
+<img src='./images/project/no-friends-found.png' alt='No friends found' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>No friends found</p>
 
 <img src='./images/project/search-friend.png' alt='Search Friend' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
 <p style='text-align:center'>Adding Friends</p>
@@ -161,9 +162,16 @@ Here are few screenshots of this project.
 <img src='./images/project/receiver-side-chat.png' alt='Receiver-Side Chat' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
 <p style='text-align:center'>Chat in Receiver Point of View</p>
 
-## Demo
+## Demos
 
-Insert gif or link to demo
+<img src='./demos/clear-chat.gif' alt='Clear chat' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Clear chat</p>
+
+<img src='./demos/remove-friend.gif' alt='Remove friend' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Remove friend</p>
+
+<img src='./demos/sign-out.gif' alt='Sign out' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Sign out</p>
 
 ## Details
 

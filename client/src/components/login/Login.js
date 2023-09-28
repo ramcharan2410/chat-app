@@ -28,8 +28,7 @@ const Login = (props) => {
     google.accounts.id.initialize({
       // insert your client_id here
       // client_id : 'your_client_id',
-      client_id:
-        '804547907378-i1mr36ebrg53okj2kqao9nkbijsmc6p8.apps.googleusercontent.com',
+      client_id: 'get client_id from https://console.cloud.google.com',
       callback: handleLogin,
     })
 
