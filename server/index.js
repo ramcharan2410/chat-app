@@ -2,12 +2,8 @@ const express = require('express')
 const app = express()
 const { open } = require('sqlite')
 const sqlite3 = require('sqlite3').verbose()
-const path = require('path')
-const filepath = path.join(__dirname, 'database.db')
 const cors = require('cors')
 const jwt_decode = require('jwt-decode')
-const fs = require('fs')
-const https = require('https')
 const io = require('socket.io')(3002, {
   cors: {
     origin: '*',
@@ -23,8 +19,8 @@ io.use((socket, next) => {
     const userData = {
       email: user.email,
       name: user.name,
-      first_name: user.given_name,
-      last_name: user.family_name,
+      first_name: user.first_name,
+      last_name: user.last_name,
     }
 
     socket.user = userData
@@ -117,8 +113,8 @@ const userData = async (req, res, nxt) => {
     email = '',
     name = '',
     picture = '',
-    given_name = '',
-    family_name = '',
+    first_name = '',
+    last_name = '',
   } = jwt_decode(data)
 
   try {
@@ -132,7 +128,7 @@ const userData = async (req, res, nxt) => {
         INSERT INTO users(name, email, picture, first_name, last_name)
         VALUES (?, ?, ?, ?, ?)
         `,
-        [name, email, picture, given_name, family_name]
+        [name, email, picture, first_name, last_name]
       )
 
       res.send({ response: 'User Added' })
@@ -187,7 +183,7 @@ app.post('/testdata', userData, async (req, res) => {})
 // Get user's friends
 app.get('/userFriends', auth, async (req, res) => {
   const { email } = req.userDetails
-  const sqlq = `select * from users inner join  userfriends on users.email =userfriends.friend where userfriends.user=?;`
+  const sqlq = `select * from users inner join userfriends on users.email = userfriends.friend where userfriends.user=?;`
   try {
     const data = await db.all(sqlq, [email])
     res.send(data)
@@ -285,6 +281,7 @@ app.get('/getuserdata/:email', async (req, res) => {
     console.error(e)
   }
 })
+
 // Endpoint to clear chat history with a specific friend
 app.post('/clear-chat/:userEmail/:friendEmail', async (req, res) => {
   const { userEmail, friendEmail } = req.params

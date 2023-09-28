@@ -1,8 +1,6 @@
-import { useEffect } from 'react'
-
-import Cookies from 'js-cookie'
-
 import './login.css'
+import { useEffect } from 'react'
+import Cookies from 'js-cookie'
 import { Redirect } from 'react-router-dom/'
 
 const Login = (props) => {
@@ -19,6 +17,7 @@ const Login = (props) => {
 
     const responsed = await fetch('http://localhost:3001/testdata', options)
     const data = await responsed.json()
+    console.log(data)
 
     const { history } = props
     history.replace('/')

@@ -1,11 +1,12 @@
 import './suggestions.css'
+
 const Suggestions = (props) => {
-  const { data, addingFriend, getTxt } = props
+  const { data, addingFriend, fetchChat } = props
   const { name, socket_id } = data
 
   const clickHandler = () => {
     addingFriend(data)
-    getTxt(data.email)
+    fetchChat(data.email)
   }
 
   return (

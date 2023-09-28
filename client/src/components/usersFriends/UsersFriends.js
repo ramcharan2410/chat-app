@@ -1,4 +1,5 @@
 import './usersfriends.css'
+
 const UsersFriends = (props) => {
   const { picture, name, socket_id, email } = props.data
   const { selectedUserChanger, fetchChat } = props
@@ -18,7 +19,7 @@ const UsersFriends = (props) => {
       >
         <img
           src={picture}
-          alt="profile pic"
+          alt="Profile pic"
           className="profile-pic-friend"
           style={{ outlineColor: socket_id === null ? 'red' : 'green' }}
         />

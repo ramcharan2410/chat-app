@@ -1,18 +1,25 @@
 # Chat-App
 
-Just description here
-
 ## Table of Contents
 
-1. [Deployment](#deployment)
-2. [Environment Variables](#environment-variables)
-3. [Brief Description](#brief-description)
-4. [Features](#features)
-5. [Screenshots](#screenshots)
-6. [Demo](#demo)
-7. [Feedback](#feedback)
+1. [Brief Description](#brief-description)
+2. [Deployment](#deployment)
+3. [Environment Variables](#environment-variables)
+4. [Languages Used](#languages-used)
+5. [Dependencies and Libraries Used](#dependencies-and-libraries-used)
+6. [Documentation](#documentation)
+7. [Features](#features)
+8. [Screenshots](#screenshots)
+9. [Demo](#demo)
+10. [Details](#details)
+11. [Feedback](#feedback)
 
 ## Brief Description
+
+- This project is a web chat application using React.js and Node.js that enables users to engage in real-time one-on-one and group conversations.
+- The application leverages a range of technologies, including JWT-based user authentication, HTTP requests, WebSocket communication for instant messaging, and integration with Google Cloud services for data storeage and possibly user authentication.
+- It offers features such as clearing chat history and adding/removing friends, all accessible through an intuitive user interface.
+- It also includes features like message notifications and automatic scrolling to enhance the user experience.
 
 ## Deployment
 
@@ -20,8 +27,31 @@ To run this project, proceed with the following steps:
 
 1. Fork this repository
 2. Clone this repository in your local code editor (preferably VS Code)
+3. Install dependencies and libraries required for client ->
 
-3. Install the required
+   `cd client`
+
+   `npm install`
+
+4. Install dependencies and libraries required for server ->
+
+   `cd server`
+
+   `npm install`
+
+5. Start the server ->
+
+   `cd server`
+
+   `nodemon index.js`
+
+6. Start the client ->
+
+   `cd client`
+
+   `npm start`
+
+7. Finally, this project will be launched in http://localhost:3000.
 
 ## Environment Variables
 
@@ -108,18 +138,40 @@ Refer to the below given respective documentations for the languages used to bui
 
 ## Features
 
--
--
--
+- User registration and authentication
+- Sending and receiving text messages between users
+- Real-time message updates
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-Some description about this screenshot.
+Here are few screenshots of this project.
+
+<img src='./images/project/login-page.png' alt='Login Page' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Login Page</p>
+
+<img src='./images/project/no-friends-found.png' alt='No Friend Found' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Initially you have no friends</p>
+
+<img src='./images/project/search-friend.png' alt='Search Friend' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Adding Friends</p>
+
+<img src='./images/project/sender-side-chat.png' alt='Sender-Side Chat' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Chat in Sender Point of View</p>
+
+<img src='./images/project/receiver-side-chat.png' alt='Receiver-Side Chat' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Chat in Receiver Point of View</p>
 
 ## Demo
 
 Insert gif or link to demo
+
+## Details
+
+Name: Vakkalanka Ram Charan
+
+University/College: Indian Institute of Technology Bhubaneshwar
+
+Department: Electronics and Communication Engineering
 
 ## Feedback
 

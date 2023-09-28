@@ -22,7 +22,6 @@ const debounce = (func, timeout = 10000) => {
 
 const Home = (props) => {
   const [userData, setUserData] = useState({})
-
   const [name, setName] = useState('')
   const [nameSuggestions, setNameSuggestions] = useState({})
   const [userSocket, setUserSocket] = useState({})
@@ -32,6 +31,8 @@ const Home = (props) => {
   const [messagesList, setMessagesList] = useState([])
 
   const chatCanvas = useRef(null)
+
+  // Functions
   const nameHandler = async (event) => {
     const name = event.target.value
     setName(name)
@@ -155,6 +156,7 @@ const Home = (props) => {
       console.error(error)
     }
   }
+
   const renderMessages = () => {
     if (messagesList.length === 0) return null
     return (
@@ -169,6 +171,7 @@ const Home = (props) => {
       </>
     )
   }
+
   const removeFriend = async (friendEmail) => {
     const jwtToken = Cookies.get('jwt_token')
     const options = {
@@ -229,9 +232,8 @@ const Home = (props) => {
   }
 
   const notify = (data) => {
-    const notification = new Notification(`message from ${data.sender}`, {
+    const notification = new Notification(`Message from ${data.sender}`, {
       body: `${data.message_content}`,
-      icon: '/Users/karthickcherukuri/Downloads/png-clipart-ios-message-icon-iphone-message-computer-icons-text-messaging-messenger-electronics-grass.png',
       vibrate: [200, 100, 200, 100, 200],
     })
     notification.addEventListener('click', () => {
@@ -245,6 +247,7 @@ const Home = (props) => {
     }, 5000)
   }
 
+  // State changes
   useEffect(() => {
     const jwtToken = Cookies.get('jwt_token')
     const userData = jwt_decode(jwtToken)
@@ -287,11 +290,12 @@ const Home = (props) => {
       })
     } catch (error) {
       console.log(error)
-      alert('Something went wrong please reload')
+      alert('Something went wrong. Please reload')
     }
 
     getUserFriends()
   }, [])
+
   useEffect(() => {
     try {
       userSocket.on('send-message-to-friend', (data) => {
@@ -323,6 +327,7 @@ const Home = (props) => {
       console.error(error)
     }
   }, [selectedUser, userSocket])
+
   useEffect(() => {
     const container = chatCanvas.current
     container.addEventListener('scroll', () => {
@@ -343,7 +348,7 @@ const Home = (props) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
       <nav>
-        <img src={userData.picture} alt="profile pic" className="profile-pic" />
+        <img src={userData.picture} alt="Profile pic" className="profile-pic" />
         <span className="app-name">Message App</span>
         <div className="search-with-name">
           <input
@@ -360,20 +365,20 @@ const Home = (props) => {
                   data={each}
                   key={each.email}
                   addingFriend={addingFriend}
-                  getTxt={fetchChat}
+                  fetchChat={fetchChat}
                 />
               ))}
             </ul>
           )}
         </div>
-
         <button onClick={signout} className="sign-out-btn">
           Sign out
         </button>
       </nav>
+
       <div className="ui">
         <div id="sidebar">
-          <div className="chats">Chats</div>
+          <span className="chats">Chats</span>
           {userFriends.length > 0 ? (
             userFriends.map((each) => (
               <div
@@ -397,9 +402,10 @@ const Home = (props) => {
               </div>
             ))
           ) : (
-            <h1>No Friends Found</h1>
+            <h1 style={{ color: '#eee' }}>No Friends Found</h1>
           )}
         </div>
+
         <div
           id="chat-container"
           style={{
@@ -415,6 +421,7 @@ const Home = (props) => {
             </div>
             {renderMessages()}
           </div>
+
           <div>
             <form onSubmit={sendMessageForm} className="messageInputForm">
               <input
