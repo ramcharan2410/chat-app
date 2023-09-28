@@ -3,8 +3,8 @@
 ## Table of Contents
 
 1. [Brief Description](#brief-description)
-2. [Deployment](#deployment)
-3. [Environment Variables](#environment-variables)
+2. [Environment Variables](#environment-variables)
+3. [Deployment](#deployment)
 4. [Languages Used](#languages-used)
 5. [Dependencies and Libraries Used](#dependencies-and-libraries-used)
 6. [Documentation](#documentation)
@@ -20,6 +20,33 @@
 - The application leverages a range of technologies, including JWT-based user authentication, HTTP requests, WebSocket communication for instant messaging, and integration with Google Cloud services for data storeage and possibly user authentication.
 - It offers features such as clearing chat history and adding/removing friends, all accessible through an intuitive user interface.
 - It also includes features like message notifications and automatic scrolling to enhance the user experience.
+
+## Environment Variables
+
+To run this project, you will need to get your own `Client ID` from [Google Cloud Console](https://console.cloud.google.com).
+
+Create an account in Google Cloud Console
+
+<img src='./images/deployment/google-cloud-console.png' alt='Google Could Console' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Google Could Console</p>
+
+Go to APIs and Services
+
+<img src='./images/deployment/apis-and-services.png' alt='APIs and Services' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>APIs and Services</p>
+
+Then, in the Credentials section -> Create Credentials -> OAuth client ID
+
+<img src='./images/deployment/credentials.png' alt='Credentials Section' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Credentials Section</p>
+
+<img src='./images/deployment/create-client-id.png' alt='Create OAuth Client ID' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Create OAuth Client ID</p>
+
+Create your own `Client ID` and insert it in the project directory _/chat-app/client/src/components/login/Login.js_ as shown:
+
+<img src='./images/deployment/insert-client-id.png' alt='Insert your Client ID' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
+<p style='text-align:center'>Insert your Client ID here</p>
 
 ## Deployment
 
@@ -52,33 +79,6 @@ To deploy this project, proceed with the following steps:
    `npm start`
 
 7. Finally, this project will be launched at http://localhost:3000.
-
-## Environment Variables
-
-To run this project, you will need to get your own `Client ID` from [Google Cloud Console](https://console.cloud.google.com).
-
-Create an account in Google Cloud Console
-
-<img src='./images/deployment/google-cloud-console.png' alt='Google Could Console' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Google Could Console</p>
-
-Go to APIs and Services
-
-<img src='./images/deployment/apis-and-services.png' alt='APIs and Services' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>APIs and Services</p>
-
-Then, in the Credentials section -> Create Credentials -> OAuth client ID
-
-<img src='./images/deployment/credentials.png' alt='Credentials Section' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Credentials Section</p>
-
-<img src='./images/deployment/create-client-id.png' alt='Create OAuth Client ID' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Create OAuth Client ID</p>
-
-Create your own `Client ID` and insert it in the project directory _/chat-app/client/src/components/login/Login.js_ as shown:
-
-<img src='./images/deployment/insert-client-id.png' alt='Insert your Client ID' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Insert your Client ID</p>
 
 ## Languages Used
 
