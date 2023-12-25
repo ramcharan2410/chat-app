@@ -130,7 +130,7 @@ To deploy this project, proceed with the following steps:
 
 Refer to the below given respective documentations for the languages used to build this project.
 
-- [Documentation for React.js](https://legacy.reactjs.org/docs/getting-started.html)
+- [Documentation for React.js](https://react.dev/)
 
 - [Documentation for Node.js](https://nodejs.org/en/docs)
 
@@ -145,39 +145,49 @@ Refer to the below given respective documentations for the languages used to bui
 
 ## Screenshots
 
-Here are few screenshots of this project.
+Here are few screenshots of this project:
+
+### Login Page
 
 <img src='./images/project/login-page.png' alt='Login Page' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Login Page</p>
+
+### No friends found
 
 <img src='./images/project/no-friends-found.png' alt='No friends found' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>No friends found</p>
+
+### Adding Friends
 
 <img src='./images/project/search-friend.png' alt='Search Friend' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Adding Friends</p>
+
+### Chat in Sender Point of View
 
 <img src='./images/project/sender-side-chat.png' alt='Sender-Side Chat' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Chat in Sender Point of View</p>
+
+### Chat in Receiver Point of View
 
 <img src='./images/project/receiver-side-chat.png' alt='Receiver-Side Chat' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Chat in Receiver Point of View</p>
 
 ## Demos
 
+### Clear chat
+
 <img src='./demos/clear-chat.gif' alt='Clear chat' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Clear chat</p>
+
+### Remove friend
 
 <img src='./demos/remove-friend.gif' alt='Remove friend' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Remove friend</p>
+
+### Sign out
 
 <img src='./demos/sign-out.gif' alt='Sign out' style='display:block;margin-left:auto;margin-right:auto;width:50%;'>
-<p style='text-align:center'>Sign out</p>
 
 ## Details
 
 Name: Vakkalanka Ram Charan
 
 University/College: Indian Institute of Technology Bhubaneshwar
+
+Batch: 2021-2025
 
 Department: Electronics and Communication Engineering
 
